@@ -74,7 +74,7 @@ abstract class Base {
     // This is abstract function
     abstract function printdata();
 }
-class Derived extends base {
+class Derived extends Base {
     function __construct() {
         echo "\n Derived class constructor";
     }
