@@ -52,3 +52,21 @@ console.log(arr.reverse())
 console.log(arr.push(arr2))
 
 console.log(arr.reverse()); // [1,2,3,4,5,6]
+
+//=========sorting=========
+numbers = [2, 3, 41, 3, 2, 4, 5];
+
+numbers.sort(function (a, b) {
+    return a - b
+});
+console.log(numbers, 'numbers')
+
+//=======odd and even separation in an array of numbers==============
+var odd_and_even = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+odd_and_even     = odd_and_even.filter(e => e % 2).concat(odd_and_even.filter(e => e % 2 === 0));
+console.log(odd_and_even, 'odd_and_even')
+
+var odd_and_even_2 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+odd_and_even_2.sort((a, b) => b % 2 - a % 2 || a - b);
+console.log(odd_and_even_2, 'odd_and_even_2')
