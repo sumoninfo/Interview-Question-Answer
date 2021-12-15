@@ -53,7 +53,7 @@ console.log(arr.push(arr2))
 
 console.log(arr.reverse()); // [1,2,3,4,5,6]
 
-//=========sorting=========
+//=========sorting array value by ASC=========
 numbers = [2, 3, 41, 3, 2, 4, 5];
 
 numbers.sort(function (a, b) {
