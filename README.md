@@ -21,5 +21,7 @@
 - Min number from array
 - Odd and Even number from array
 # Vue JS
+- Vue js life circle 
+- 
 # React JS
 

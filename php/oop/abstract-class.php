@@ -1,6 +1,6 @@
 <?php
 // Parent class
-/*abstract class Car {
+abstract class Car {
     public $name;
     public function __construct($name) {
         $this->name = $name;
@@ -37,7 +37,7 @@ echo $volvo->intro();
 echo "<br>";
 
 $citroen = new citroen("Citroen");
-echo $citroen->intro(); */
+echo $citroen->intro();
 
 /*
 abstract class ParentClass {
@@ -66,7 +66,7 @@ echo $class->prefixName("Jane Doe");*/
 
 
 // Abstract class
-abstract class Base {
+/*abstract class Base {
     function __construct() {
         echo "this is abstract class constructor ";
     }
@@ -83,4 +83,4 @@ class Derived extends Base {
     }
 }
 $b1 = new Derived;
-$b1->printdata();
+$b1->printdata();*/
