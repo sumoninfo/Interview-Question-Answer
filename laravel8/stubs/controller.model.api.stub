@@ -1,0 +1,91 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ namespacedModel }};
+use {{ rootNamespace }}Http\Controllers\Controller;
+use {{ namespacedRequests }}
+use App\Http\Resources\{{ model }}Resource;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
+
+class {{ class }} extends BaseController
+{
+    /**
+     * {{ class }}Controller constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware('permission:appointment-view|appointment-create|appointment-update|appointment-delete', ['only' => ['index', 'show', 'store']]);
+        $this->middleware('permission:appointment-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:appointment-update', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:appointment-delete', ['only' => ['destroy']]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return AnonymousResourceCollection
+     */
+    public function index(Request $request)
+    {
+        $query = {{ model }}::query();
+        if ($request->filled('search')) {
+            $query->where('name', 'LIKE', "%{$request->search}%");
+        }
+        $query = $query->latest()->paginate($request->get('per_page', config('constant.pagination')));
+        return {{ model }}Resource::collection($query);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param {{ storeRequest }} $request
+     * @return JsonResponse
+     */
+    public function store({{ storeRequest }} $request)
+    {
+        ${{ modelVariable }} = new {{ model }}();
+        ${{ modelVariable }}->fill($request->all());
+        ${{ modelVariable }}->save();
+        return $this->returnResponse("success", "Created successfully", new {{ model }}Resource(${{ modelVariable }}));
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param {{ model }} ${{ modelVariable }}
+     * @return {{ model }}Resource
+     */
+    public function show({{ model }} ${{ modelVariable }})
+    {
+        return new {{ model }}Resource(${{ modelVariable }});
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param {{ updateRequest }} $request
+     * @param {{ model }} ${{ modelVariable }}
+     * @return JsonResponse
+     */
+    public function update({{ updateRequest }} $request, {{ model }} ${{ modelVariable }})
+    {
+        ${{ modelVariable }}->fill($request->all());
+        ${{ modelVariable }}->update();
+        return $this->returnResponse("success", "Updated successfully", ${{ modelVariable }});
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param {{ model }} ${{ modelVariable }}
+     * @return JsonResponse
+     */
+    public function destroy({{ model }} ${{ modelVariable }})
+    {
+        ${{ modelVariable }}->delete();
+        return $this->returnResponse("success", "Deleted successfully");
+    }
+}
