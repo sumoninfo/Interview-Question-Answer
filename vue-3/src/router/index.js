@@ -29,6 +29,20 @@ const routes = [
         name     : 'posts.edit',
         component: () => import('../views/post/CreateEdit')
     },
+    /*-------------posts--------------*/
+    {
+        path     : '/companies',
+        name     : 'companies.index',
+        component: () => import('../views/company/Index')
+    }, {
+        path     : '/companies/create',
+        name     : 'companies.create',
+        component: () => import('../views/company/Create')
+    }, {
+        path     : '/companies/edit/:id',
+        name     : 'companies.edit',
+        component: () => import('../views/company/Edit')
+    },
 ]
 
 const router = createRouter({
