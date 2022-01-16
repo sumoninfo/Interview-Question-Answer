@@ -19,6 +19,8 @@
 - Default parameter Rest Parameter
 - Different between Let Var & Const
 - How many scope in JS
+- ES6 features 
+- async & await in js
 ### Array
 - Pop, Push, Shift and Unshift Array Methods in JavaScript
 - sorting array value by ASC
