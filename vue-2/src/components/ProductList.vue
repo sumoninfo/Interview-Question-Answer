@@ -15,15 +15,28 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import {mapState, mapActions, mapGetters} from 'vuex'
+
 export default {
-  computed: mapState({
+  computed: {
+    ...mapState({
+      products: state => state.products.all
+    }),
+  },
+
+  /*computed: mapState({
     products: state => state.products.all
-  }),
-  methods: mapActions('cart', [
-    'addProductToCart'
-  ]),
-  created () {
+  }),*/
+  /* methods : mapActions('cart', [
+     'addProductToCart'
+   ]),*/
+  methods: {
+    addProductToCart(products) {
+      this.$store.dispatch('cart/addProductToCart', products)
+    }
+  },
+
+  created() {
     this.$store.dispatch('products/getAllProducts')
   }
 }

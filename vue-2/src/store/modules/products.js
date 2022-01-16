@@ -10,7 +10,7 @@ const getters = {}
 
 // actions
 const actions = {
-    getAllProducts ({ commit }) {
+    getAllProducts({commit}) {
         shop.getProducts(products => {
             commit('setProducts', products)
         })
@@ -19,11 +19,11 @@ const actions = {
 
 // mutations
 const mutations = {
-    setProducts (state, products) {
+    setProducts(state, products) {
         state.all = products
     },
 
-    decrementProductInventory (state, { id }) {
+    decrementProductInventory(state, {id}) {
         const product = state.all.find(product => product.id === id)
         product.inventory--
     }
