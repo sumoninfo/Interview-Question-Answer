@@ -7,6 +7,8 @@
       {{ count }}
     </div>
     <button @click="count++">Click</button>
+
+    Name: {{ name }}
   </div>
 </template>
 <script>
@@ -17,19 +19,22 @@ export default {
   components: {TodoComponent},
   data      : () => ({
     isComponentLoaded: true,
-    count            : 0
+    count            : 0,
+    name             : 'aaa',
   }),
   beforeCreate() {
+    this.name = 'beforeCreate call'
     console.log("beforeCreate")
   },
   created() {
+    this.name = 'created call'
     console.log("created")
   },
   beforeMount() {
-    console.log("beforeMount")
+    console.log("beforeMount", this.$el)
   },
   mounted() {
-    console.log("mounted")
+    console.log("mounted", this.$el)
   },
   beforeUpdate() {
     console.log("beforeUpdate", this.$refs['count'].textContent)
