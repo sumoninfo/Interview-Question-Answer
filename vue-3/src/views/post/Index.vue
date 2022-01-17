@@ -15,18 +15,7 @@
       </thead>
       <tbody>
       <tr v-for="(list, index) in posts">
-        <th scope="row">{{ ++index }}</th>
-        <td>{{ list.title }}</td>
-        <td>{{ list.description }}</td>
-        <td>
-          <router-link title="Edit" class="btn-sm btn btn-primary w-100"
-                       :to="{name: 'posts.edit', params: {id: list.id}}">
-            <i class="fa fa-edit"></i>
-          </router-link>
-          <button title="Delete" @click="destroy(list.id)" type="button" class="btn-sm btn btn-danger w-100">
-            <i class="fa fa-trash"></i>
-          </button>
-        </td>
+        <PostList :list="list" :index="index"/>
       </tr>
       </tbody>
     </table>
@@ -37,11 +26,12 @@
 import {onMounted, reactive, ref} from "vue";
 import ApiService                 from "@/services/api.service";
 import NotificationService        from "@/services/notification.service";
+import PostList                   from "@/views/post/PostList";
 //import Pagination          from "@/components/Pagination";
 
 export default {
   name      : "PostsIndex",
-  components: {ApiService, NotificationService},
+  components: {PostList, ApiService, NotificationService},
   setup() {
     let posts      = ref([])
     let table      = reactive({
