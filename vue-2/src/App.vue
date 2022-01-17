@@ -1,21 +1,15 @@
 <template>
   <div id="app">
-    <h1>Shopping Cart Example</h1>
-    <hr>
-    <h2>Products</h2>
-    <ProductList/>
-    <hr>
-    <ShoppingCart/>
-    <div v-changestyle="{color:'red'}">VueJS Directive</div>
-    <div id="hook-arguments-example" v-demo:foo.a.b="'message'"></div>
+    <router-link to="/">Home</router-link>
+    |
+    <router-link to="/about">About</router-link>
+    |
+    <router-view/>
   </div>
 </template>
 
 <script>
-import ProductList  from './components/ProductList.vue'
-import ShoppingCart from './components/ShoppingCart.vue'
-
 export default {
-  components: {ProductList, ShoppingCart}
+
 }
 </script>

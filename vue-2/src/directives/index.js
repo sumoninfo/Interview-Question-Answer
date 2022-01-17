@@ -2,9 +2,9 @@ import Vue from "vue";
 
 Vue.directive("changestyle",{
     bind(e1,binding, vnode) {
-        console.log(e1);
+        /*console.log(e1);
         console.log(binding.value.color);
-        console.log(vnode);
+        console.log(vnode);*/
         e1.style.color=binding.value.color;
         e1.style.fontSize = "30px";
     }
