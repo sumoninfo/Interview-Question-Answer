@@ -3,6 +3,10 @@
     <h1>This is an about page</h1>
     <button @click="isComponentLoaded =! isComponentLoaded">CLick</button>
     <TodoComponent v-if="isComponentLoaded"/>
+    <div ref="count">
+      {{ count }}
+    </div>
+    <button @click="count++">Click</button>
   </div>
 </template>
 <script>
@@ -12,7 +16,8 @@ export default {
   name      : 'Lifecycle',
   components: {TodoComponent},
   data      : () => ({
-    isComponentLoaded: true
+    isComponentLoaded: true,
+    count            : 0
   }),
   beforeCreate() {
     console.log("beforeCreate")
@@ -27,10 +32,10 @@ export default {
     console.log("mounted")
   },
   beforeUpdate() {
-    console.log("beforeUpdate")
+    console.log("beforeUpdate", this.$refs['count'].textContent)
   },
   updated() {
-    console.log("updated")
+    console.log("updated", this.$refs['count'].textContent)
   },
 }
 </script>
