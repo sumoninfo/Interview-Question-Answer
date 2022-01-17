@@ -11,9 +11,9 @@ Vue.config.productionTip = false
 
 /*before route*/
 router.beforeEach((to, from, next) => {
-    console.log(to, 'to')
+    /*console.log(to, 'to')
     console.log(from, 'from')
-    console.log(next, 'next')
+    console.log(next, 'next')*/
     next();
 })
 
