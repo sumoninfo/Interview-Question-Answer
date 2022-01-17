@@ -1,5 +1,5 @@
 <template>
-  <th scope="row">{{ index+1 }}</th>
+  <th scope="row">{{ index + 1 }}</th>
   <td>{{ list.title }}</td>
   <td>{{ list.description }}</td>
   <td>
@@ -14,11 +14,13 @@
 </template>
 
 <script>
+import {toRef} from "vue";
+
 export default {
   name : "PostList",
   props: {
     list : {
-      type   : Object,
+      type    : Object,
       required: true
     },
     index: {
@@ -27,7 +29,10 @@ export default {
     }
   },
   setup(props, context) {
-    console.log(props, context)
+    console.log(context)
+    const title = toRef(props, 'index')
+
+    console.log(title.value)
   }
 }
 </script>
