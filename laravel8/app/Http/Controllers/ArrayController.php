@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 
@@ -197,7 +198,7 @@ class ArrayController extends Controller
     {
         $array = ['name' => 'Desk', 'price' => 100, 'orders' => 10];
 
-       return $slice = Arr::only($array, ['name', 'price']);
+        return $slice = Arr::only($array, ['name', 'price']);
 
         // ['name' => 'Desk', 'price' => 100]
     }
@@ -212,5 +213,21 @@ class ArrayController extends Controller
         $chunks = $collection->chunk(4);
 
         return $chunks->toArray();
+    }
+
+    public function toArray()
+    {
+        $toArray = User::query()->select('id', 'name')->first()->toArray();
+        $toJson  = User::query()->select('id', 'name')->first()->toJson();
+
+        //toArray()
+        dump(gettype($toArray));         // array
+        dump($toArray);                  // ["id" => 1, "name" => "Amira"]
+
+        //toJson()
+        dump(gettype($toJson));          // string
+        dump($toJson);                   // {"id":1,"name":"Amira"}
+        dump(json_decode($toJson)->name);// Amira
+
     }
 }

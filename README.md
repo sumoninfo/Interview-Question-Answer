@@ -6,14 +6,14 @@
 - How to get [[1, 2, 3, 4], [5, 6, 7]] from [1, 2, 3, 4, 5, 6, 7]
 - difference-between toArray() and toSql()
 - What is pub/sub in laravel?
-- How can we submit a form without a csrf token?
-- Where should I give permission? Permission to manage?
+- How can we submit a form without a csrf token? // VerifyCsrfToken Middleware $except = ['/test']
+- Where should I give permission? Permission to manage? // AuthServiceProvider => Gate::before()
 - What is CSFR TOKEN? Where we can use this? where we can use ajax request with csrf token?
 - What is laravel validations?  Where we can use this?
 - What is collections? 
 - What is migrations? example migration command
 - Laravel package development
-- Where Query log enable?
+- Where Query log enable? // DB::enableQueryLog(); $query;  dd(DB::getQueryLog()); // APP_DEBUG=true
 - 
 ## JavaScript Question
 - Default parameter Rest Parameter
