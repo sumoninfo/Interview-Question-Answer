@@ -2,6 +2,7 @@ import Vue       from 'vue'
 import VueRouter from 'vue-router'
 import Home      from '../views/Home.vue'
 import Lifecycle from "@/views/Lifecycle";
+import Events    from "@/views/Events";
 
 Vue.use(VueRouter)
 
@@ -15,6 +16,10 @@ const routes = [
         path     : '/lifecycle',
         name     : 'lifecycle',
         component: Lifecycle
+    },{
+        path     : '/events',
+        name     : 'events',
+        component: Events
     },
     {
         path: '/about',
