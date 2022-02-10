@@ -221,13 +221,14 @@ class ArrayController extends Controller
         $toJson  = User::query()->select('id', 'name')->first()->toJson();
 
         //toArray()
-        dump(gettype($toArray));         // array
-        dump($toArray);                  // ["id" => 1, "name" => "Amira"]
+        dump(gettype($toArray));                 // array
+        dump($toArray);                          // ["id" => 1, "name" => "Amira"]
+        dump($toArray['name']);                  // Amira
 
         //toJson()
-        dump(gettype($toJson));          // string
-        dump($toJson);                   // {"id":1,"name":"Amira"}
-        dump(json_decode($toJson)->name);// Amira
+        dump(gettype($toJson));                  // string
+        dump($toJson);                           // {"id":1,"name":"Amira"}
+        dump(json_decode($toJson)->name);        // Amira
 
     }
 }
