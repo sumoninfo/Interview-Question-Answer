@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\Order;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -66,7 +69,26 @@ Route::get('/mail', function () {
         'title' => 'Mail from Sumon Dev',
         'body'  => 'This is for testing email using smtp'
     ];
-    \Illuminate\Support\Facades\Mail::to('mmsumon799@gmail.com')->send(new \App\Mail\MyTestMail($details));
+    Mail::to('mmsumon799@gmail.com')->send(new \App\Mail\MyTestMail($details));
 
     dd("Email is Sent.");
+});
+
+
+//================Laravel horizon routes====================
+Route::get('/horizon-test', function () {
+//    $order = \App\Models\Order::query()->first();
+//
+//    $recipient = 'hello@example.com';
+//
+//    Mail::to($recipient)->send(new \App\Mail\OrderShipped($order));
+//
+//    return 'Sent order ' . $order->id;
+
+
+    $order = Order::query()->first();
+    \App\Jobs\SendOrderEmail::dispatch($order);
+
+    Log::info('Dispatched order ' . $order->id);
+    return 'Dispatched order ' . $order->id;
 });
